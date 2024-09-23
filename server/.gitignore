@@ -1,0 +1,52 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Build directories
+dist/
+build/
+
+# Dependency directories
+jspm_packages/
+
+# Temporary files
+tmp/
+temp/
+
+# IDE/editor specific files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Coverage directory
+coverage/
+
+# Miscellaneous
+*.tgz
+*.zip
+*.tar.gz
+
+# Compiled files
+*.class
+*.o
+*.pyc
+*.pyo
+*.exe
+
+# Backup files
+*~ 
+*.bak
+*.swp
