@@ -1,87 +1,9 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>File Upload</title>
-    <style>
-      #loading {
-        display: none;
-        margin-top: 10px;
-        color: blue;
-      }
-      #message {
-        margin-top: 10px;
-        color: green;
-      }
-      #error {
-        margin-top: 10px;
-        color: red;
-      }
-    </style>
-  </head>
-  <body>
-    <input type="file" id="fileInput" multiple />
-    <button id="uploadButton">Upload Files</button>
-    <div id="loading">Uploading...</div>
-    <div id="message"></div>
-    <div id="error"></div>
-
-    <script>
-      document
-        .getElementById("uploadButton")
-        .addEventListener("click", async () => {
-          const input = document.getElementById("fileInput");
-          const files = input.files;
-
-          document.getElementById("message").textContent = "";
-          document.getElementById("error").textContent = "";
-
-          if (files.length === 0) {
-            alert("Please select files to upload.");
-            return;
-          }
-
-          const formData = new FormData();
-          for (const file of files) {
-            formData.append("file", file);
-          }
-
-          document.getElementById("loading").style.display = "block";
-
-          try {
-            const response = await fetch("http://localhost:3500/upload", {
-              method: "POST",
-              body: formData,
-            });
-
-            document.getElementById("loading").style.display = "none";
-
-            if (!response.ok) {
-              throw new Error("Network response was not ok");
-            }
-
-            const result = await response.json();
-            document.getElementById("message").textContent =
-              "Files uploaded successfully!";
-            console.log(result);
-          } catch (error) {
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("error").textContent =
-              "Error uploading files: " + error.message;
-            console.error("Error uploading files:", error);
-          }
-        });
-    </script>
-  </body>
-</html> -->
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>File Upload</title>
+    <title>FYERS CHARGES CALCULATOR VIA CSV FILES</title>
     <style>
       #loading {
         display: none;
@@ -199,13 +121,11 @@
         if (result.funds && typeof result.funds === "object") {
           for (const [key, value] of Object.entries(result.funds)) {
             const row = `<tr><td>${key}</td><td>${value}</td></tr>`;
-            // console.log(row);
-            // resultBody.innerHTML += row;
+
             resultBody.insertAdjacentHTML("beforeend", row);
           }
         }
 
-        // Display charges
         if (Array.isArray(result.charges)) {
           for (const charge of result.charges) {
             const row = `<tr><td>${charge.expense}</td><td>${charge.amount}</td></tr>`;
@@ -213,7 +133,6 @@
           }
         }
 
-        // Display totals
         if (result.totals && typeof result.totals === "object") {
           for (const [key, value] of Object.entries(result.totals)) {
             const row = `<tr><td>${key}</td><td>${value}</td></tr>`;
@@ -221,7 +140,6 @@
           }
         }
 
-        // Display summary
         if (result.summary !== undefined) {
           const summaryRow = `<tr><td>Summary</td><td>${result.summary}</td></tr>`;
           resultBody.insertAdjacentHTML("beforeend", summaryRow);

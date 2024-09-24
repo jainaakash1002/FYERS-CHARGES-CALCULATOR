@@ -97,7 +97,6 @@ app.post("/upload", async (req, res) => {
     let pnlExpenseData = [];
     let globalPnLData = [];
 
-    // console.log("reqfiles", req.files.files);
     for (const file of req.files.file) {
       const jsonData = await convertCsvBufferToJson(file.data);
       results.push({ fileName: file.name, data: jsonData });
